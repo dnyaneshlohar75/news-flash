@@ -52,10 +52,10 @@ export default function NewsCard({ image, heading, category }: NewsCardPrps) {
             className="col-span-3 border-1 text-white"
             color="success"
             radius="full"
-            startContent={<LuPocket />}
             spinner = "start"
           >
-            Save to pocket
+            <LuPocket />
+            <span className = "hidden md:inline">Save to pocket</span>
           </Button>
         </div>
       </CardFooter>
