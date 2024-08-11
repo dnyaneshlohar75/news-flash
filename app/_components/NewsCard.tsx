@@ -21,7 +21,7 @@ export default function NewsCard({ image, heading, category }: NewsCardPrps) {
             color="danger"
             radius="md"
             variant="flat"
-            className="uppercase text-xs md:text-lg"
+            className="uppercase text-xs md:text-sm font-semibold"
             size="sm"
           >
             {category}

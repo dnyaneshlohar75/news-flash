@@ -4,6 +4,8 @@ import Headlines from "./_components/Headlines";
 import Sports from "./_components/Sports";
 import Politics from "./_components/Politics";
 import ChooseCategories from "./_components/ChooseCategories";
+import LogoutButton from "./_components/LogoutButton";
+import CategoryTabs from "./_components/CategoryTabs";
 
 export default async function Home() {
   const { isAuthenticated, getUser } = getKindeServerSession();
@@ -23,8 +25,10 @@ export default async function Home() {
       <div className="col-span-12 md:col-span-2">
         <h1 className="text-2xl font-bold">User details</h1>
         <ChooseCategories />
+        <LogoutButton />
       </div>
       <div className="col-span-12 md:col-span-6">
+        <CategoryTabs />
         <Headlines />
       </div>
       <div className="col-span-12 md:col-span-4">
