@@ -2,6 +2,7 @@ import React from "react";
 import NewsCard from "./NewsCard";
 
 export default function Headlines() {
+  
   return (
     <section className="p-5">
       <header className="mb-5">
@@ -9,7 +10,7 @@ export default function Headlines() {
           Top <span className="font-medium">Headlines</span>
         </h1>
       </header>
-      
+
       <main>
         <NewsCard
           category="Sports"

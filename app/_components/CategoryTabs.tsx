@@ -38,6 +38,7 @@ export default function CategoryTabs() {
             </div>
           }
         />
+
         <Tab
           key="entertainment"
           title={
