@@ -33,7 +33,7 @@ export default function CategoryTabs() {
           key="top_headlines"
           title = {
             <div className="flex items-center gap-3">
-              <PiMegaphone size={18} />
+              <PiMegaphone size = {18} />
               <h1 className="text-xs sm:text-sm md:text-md">Top Headlines</h1>
             </div>
           }

@@ -8,6 +8,7 @@ import LogoutButton from "./_components/LogoutButton";
 import CategoryTabs from "./_components/CategoryTabs";
 
 export default async function Home() {
+  
   const { isAuthenticated, getUser } = getKindeServerSession();
 
   if (!(await isAuthenticated())) {
