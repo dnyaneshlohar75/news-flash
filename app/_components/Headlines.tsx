@@ -10,7 +10,7 @@ export default function Headlines() {
         </h1>
       </header>
 
-      <main className="">
+      <main>
         <NewsCard
           category="Sports"
           image="https://static.toiimg.com/thumb/imgsize-79280,msid-112212049,width-400,resizemode-4/112212049.jpg"

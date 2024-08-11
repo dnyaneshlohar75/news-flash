@@ -12,7 +12,7 @@ import { GrTechnology } from "react-icons/gr";
 
 export default function CategoryTabs() {
   return (
-    <ScrollShadow orientation='horizontal' hideScrollBar = {true} offset={5} className='px-5'>
+    <ScrollShadow orientation="horizontal" hideScrollBar = {true} offset={5} className='px-5'>
       <Tabs
         color="primary" 
         variant="underlined"
