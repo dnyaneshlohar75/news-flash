@@ -9,7 +9,6 @@ export default function Headlines() {
           Top <span className="font-medium">Headlines</span>
         </h1>
       </header>
-
       <main>
         <NewsCard
           category="Sports"

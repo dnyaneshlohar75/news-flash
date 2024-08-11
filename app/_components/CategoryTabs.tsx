@@ -42,7 +42,7 @@ export default function CategoryTabs() {
           key="entertainment"
           title={
             <div className="flex items-center gap-3">
-              <PiTelevisionSimple size={18} />
+              <PiTelevisionSimple size = {18} />
               <h1 className="text-xs sm:text-sm md:text-md">Entertainment</h1>
             </div>
           }
