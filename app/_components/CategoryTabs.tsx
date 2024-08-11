@@ -11,7 +11,7 @@ import { GiMaterialsScience } from "react-icons/gi";
 import { GrTechnology } from "react-icons/gr";
 
 export default function CategoryTabs() {
-  
+
   return (
     <ScrollShadow orientation="horizontal" hideScrollBar = {true} offset={5} className='px-5'>
       <Tabs
