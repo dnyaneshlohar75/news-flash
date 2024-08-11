@@ -15,7 +15,7 @@ export default async function Home() {
   }
 
   const user = await getUser();
-  
+
   if (!user) {
     return redirect(`/api/auth/login?post_login_redirect_url=/`);
   }

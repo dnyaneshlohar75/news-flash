@@ -18,5 +18,5 @@ export default function Headlines() {
         />
       </main>
     </section>
-  );
+  )
 }
