@@ -51,7 +51,7 @@ export default function CategoryTabs() {
           key="sports"
           title={
             <div className="flex items-center space-x-2">
-              <GiCricketBat size={16} />
+              <GiCricketBat size = {16} />
               <h1 className="text-xs sm:text-sm md:text-md">Sports</h1>
             </div>
           }
@@ -60,7 +60,7 @@ export default function CategoryTabs() {
           key="politics"
           title={
             <div className="flex items-center space-x-2">
-              <LiaUniversitySolid size={18} />
+              <LiaUniversitySolid size = {18} />
               <h1 className="text-xs sm:text-sm md:text-md">Politics</h1>
             </div>
           }
