@@ -5,11 +5,11 @@ export default function Headlines() {
   return (
     <section className="p-5">
       <header className="mb-5">
-        <h1 className="font-bold sm:text-base md:text-xl">
+        <h1 className="font-bold sm:text-md md:text-xl">
           Top <span className="font-medium">Headlines</span>
         </h1>
       </header>
-      
+
       <main>
         <NewsCard
           category="Sports"
