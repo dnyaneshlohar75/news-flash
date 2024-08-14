@@ -11,7 +11,7 @@ import {
 
 export default function Sports() {
   return (
-    <section className="p-5">
+    <section className="hidden md:block p-5">
       <header className="flex items-center justify-between mb-5">
         <h1 className="font-bold sm:text-base md:text-xl">
           Sports <span className="font-medium">News</span>

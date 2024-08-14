@@ -6,9 +6,9 @@ import Politics from "./_components/Politics";
 import ChooseCategories from "./_components/ChooseCategories";
 import LogoutButton from "./_components/LogoutButton";
 import CategoryTabs from "./_components/CategoryTabs";
+import { fetchFeeds } from "./actions/functions";
 
 export default async function Home() {
-  
   const { isAuthenticated, getUser } = getKindeServerSession();
 
   if (!(await isAuthenticated())) {
@@ -21,18 +21,20 @@ export default async function Home() {
     return redirect(`/api/auth/login?post_login_redirect_url=/`);
   }
 
+  let initialFeeds = await fetchFeeds({});
+
   return (
     <main className="grid grid-cols-12 gap-8">
-      <div className="col-span-12 md:col-span-2">
+      <div className="hidden md:block col-span-12 md:col-span-2">
         <h1 className="text-2xl font-bold">User details</h1>
         <ChooseCategories />
         <LogoutButton />
       </div>
       <div className="col-span-12 md:col-span-6">
         <CategoryTabs />
-        <Headlines />
+        <Headlines initialFeeds = {initialFeeds?.articles} />
       </div>
-      <div className="col-span-12 md:col-span-4">
+      <div className="md:block md:col-span-4">
         <Sports />
         <Politics />
       </div>

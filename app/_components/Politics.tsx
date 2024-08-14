@@ -6,7 +6,7 @@ import { Image, Listbox, ListboxItem } from "@nextui-org/react";
 
 export default function Politics() {
   return (
-    <section className="p-5">
+    <section className="hidden md:block p-5">
       <header className="flex items-center justify-between mb-5">
         <h1 className="font-bold sm:text-base md:text-xl">
           Political <span className="font-medium">News</span>

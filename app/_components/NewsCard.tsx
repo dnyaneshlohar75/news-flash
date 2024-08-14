@@ -1,20 +1,17 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { Button, Card, CardFooter, Chip } from "@nextui-org/react";
+import { Button, Card, CardFooter, Chip, Image } from "@nextui-org/react";
 import { LuEye, LuMessageSquare, LuShare2, LuPocket } from "react-icons/lu";
+import { article } from "@/types/types";
 
-interface NewsCardPrps {
-  image?: string;
-  category?: string;
-  heading?: string;
-}
-
-export default function NewsCard({ image, heading, category }: NewsCardPrps) {
+export default function NewsCard({ title, urlToImage }: article) {
   return (
     <Card shadow="none" className="border">
-      <img src={image} title={image} />
+      <Image
+        src={urlToImage || 'https://www.its.ac.id/tmesin/wp-content/uploads/sites/22/2022/07/no-image.png' as string}
+        title={title}
+      />
       <CardFooter className="flex flex-col items-start">
         <div className="w-full my-3 flex items-center justify-between">
           <Chip
@@ -23,9 +20,7 @@ export default function NewsCard({ image, heading, category }: NewsCardPrps) {
             variant="flat"
             className="uppercase text-xs md:text-sm font-semibold"
             size="sm"
-          >
-            {category}
-          </Chip>
+          ></Chip>
           <div className="">
             <div className="flex items-center gap-4">
               <p className="flex items-center gap-2 font-semibold text-sm">
@@ -43,19 +38,19 @@ export default function NewsCard({ image, heading, category }: NewsCardPrps) {
         <div className="my-2 grid grid-cols-12 gap-4">
           <h1
             className="col-span-9 line-clamp-2 font-semibold text-sm md:text-base"
-            title={heading}
+            title={title}
           >
-            {heading}
+            {title}
           </h1>
           <Button
             size="sm"
             className="col-span-3 border-1 text-white"
             color="success"
             radius="full"
-            spinner = "start"
+            spinner="start"
           >
             <LuPocket />
-            <span className = "hidden md:inline">Save to pocket</span>
+            <span className="hidden md:inline">Save to pocket</span>
           </Button>
         </div>
       </CardFooter>

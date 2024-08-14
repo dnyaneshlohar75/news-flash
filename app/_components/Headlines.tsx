@@ -1,8 +1,37 @@
-import React from "react";
-import NewsCard from "./NewsCard";
+"use client";
 
-export default function Headlines() {
-  
+import { useEffect, useState } from "react";
+import NewsCard from "./NewsCard";
+import { useInView } from "react-intersection-observer";
+import Loading from "./Loading";
+import { article, NewsProps } from "@/types/types";
+import { fetchFeeds } from "../actions/functions";
+
+export default function Headlines({
+  initialFeeds,
+}: {
+  initialFeeds: article[];
+}) {
+  const [ref, inView] = useInView();
+  const [feeds, setFeeds] = useState(initialFeeds);
+  const [page, setPage] = useState(1);
+
+  const loadMoreFeeds = async () => {
+    let next = page + 1;
+
+    let resp = await fetchFeeds({ page: next });
+    setPage(next);
+
+    setFeeds((prev: article[] | undefined) => [
+      ...(prev?.length ? prev : []),
+      ...resp.articles,
+    ]);
+  };
+
+  useEffect(() => {
+    if (inView) loadMoreFeeds();
+  }, [inView]);
+
   return (
     <section className="p-5">
       <header className="mb-5">
@@ -11,13 +40,26 @@ export default function Headlines() {
         </h1>
       </header>
 
-      <main>
-        <NewsCard
-          category="Sports"
-          image="https://static.toiimg.com/thumb/imgsize-79280,msid-112212049,width-400,resizemode-4/112212049.jpg"
-          heading="Paris Olympics 2024 Day 7 Live Updates: India men's hockey team registers first win over Australia in 52 years at Olympics; Indian archers lose in Mixed Team bronze medal match; Manu Bhaker qualifies for Women's 25m Pistol final."
-        />
+      <main className="space-y-4">
+        {feeds &&
+          feeds?.map((feed) => (
+            <NewsCard
+              key={feed.title}
+              title={feed.title}
+              urlToImage={feed.urlToImage}
+              content={feed.content}
+              publishedAt={feed.publishedAt}
+              url={feed.url}
+              author={feed.author}
+              description={feed.description}
+              source={feed.source}
+            />
+          ))}
       </main>
+      <div ref = {ref}>
+        <Loading />
+      </div>
+      
     </section>
-  )
+  );
 }
