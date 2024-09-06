@@ -23,7 +23,7 @@ export default function Politics() {
           className="bg-white rounded-2xl px-0 shadow-sm"
           onAction={(key) => alert(key)}
         >
-          <ListboxItem className="py-3 px-2" showDivider={true} key="new">
+          <ListboxItem className="py-3 px-2" showDivider={true} key="new" textValue="">
             <div className="flex gap-3">
               <Image
                 alt="nextui logo"
@@ -31,6 +31,7 @@ export default function Politics() {
                 radius="sm"
                 src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
                 width={40}
+                title = {"img"}
               />
               <div className="flex flex-col">
                 <p className="text-md">NextUI</p>
@@ -38,7 +39,7 @@ export default function Politics() {
               </div>
             </div>
           </ListboxItem>
-          <ListboxItem className="py-3 px-2" showDivider={true} key="copy">
+          <ListboxItem className="py-3 px-2" showDivider={true} key="copy" textValue="">
           <div className="flex gap-3">
               <Image
                 alt="nextui logo"
@@ -46,6 +47,7 @@ export default function Politics() {
                 radius="sm"
                 src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
                 width={40}
+                title = {"img"}
               />
               <div className="flex flex-col">
                 <p className="text-md">NextUI</p>
@@ -53,7 +55,7 @@ export default function Politics() {
               </div>
             </div>
           </ListboxItem>
-          <ListboxItem className="py-3 px-2" key="edit">
+          <ListboxItem className="py-3 px-2" key="edit" textValue="">
           <div className="flex gap-3">
               <Image
                 alt="nextui logo"
@@ -61,6 +63,7 @@ export default function Politics() {
                 radius="sm"
                 src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
                 width={40}
+                title = {"img"}
               />
               <div className="flex flex-col">
                 <p className="text-md">NextUI</p>

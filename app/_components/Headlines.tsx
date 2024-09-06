@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
 import { useInView } from "react-intersection-observer";
 import Loading from "./Loading";
@@ -13,12 +13,12 @@ export default function Headlines({
   initialFeeds: article[];
 }) {
   const [ref, inView] = useInView();
+
   const [feeds, setFeeds] = useState(initialFeeds);
   const [page, setPage] = useState(1);
 
-  const loadMoreFeeds = async () => {
+  const loadMoreFeeds = useCallback(async () => {
     let next = page + 1;
-
     let resp = await fetchFeeds({ page: next });
     setPage(next);
 
@@ -26,10 +26,12 @@ export default function Headlines({
       ...(prev?.length ? prev : []),
       ...resp.articles,
     ]);
-  };
+  }, [page, setPage, setFeeds]);
 
   useEffect(() => {
-    if (inView) loadMoreFeeds();
+    if (inView) {
+      loadMoreFeeds();
+    }
   }, [inView]);
 
   return (
@@ -56,10 +58,9 @@ export default function Headlines({
             />
           ))}
       </main>
-      <div ref = {ref}>
+      <div ref={ref}>
         <Loading />
       </div>
-      
     </section>
   );
 }

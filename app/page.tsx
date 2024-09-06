@@ -21,23 +21,20 @@ export default async function Home() {
     return redirect(`/api/auth/login?post_login_redirect_url=/`);
   }
 
-  let initialFeeds = await fetchFeeds({});
+  let initialFeeds = (await fetchFeeds({})).articles;
 
   return (
-    <main className="grid grid-cols-12 gap-8">
-      <div className="hidden md:block col-span-12 md:col-span-2">
-        <h1 className="text-2xl font-bold">User details</h1>
-        <ChooseCategories />
-        <LogoutButton />
-      </div>
-      <div className="col-span-12 md:col-span-6">
+    <main className="max-w-5xl mx-auto">
+      <section className="flex gap-8 w-full">
+      <div className="flex-1">
         <CategoryTabs />
-        <Headlines initialFeeds = {initialFeeds?.articles} />
+        <Headlines initialFeeds = {initialFeeds} />
       </div>
-      <div className="md:block md:col-span-4">
+      <div className="md:block w-2xl">
         <Sports />
         <Politics />
       </div>
+      </section>
     </main>
   );
 }

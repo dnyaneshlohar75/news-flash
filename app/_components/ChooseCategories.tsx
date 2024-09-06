@@ -24,7 +24,6 @@ export default function ChooseCategories() {
       id: "1",
       image: "https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg",
       name: "Sports",
-      isChecked: true,
     },
     {
       id: "2",
@@ -42,7 +41,7 @@ export default function ChooseCategories() {
         id: "4",
         image: "https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg",
         name: "Entertentment",
-        isChecked: true,
+        
       },
       {
         id: "5",
@@ -92,6 +91,8 @@ export default function ChooseCategories() {
                   name={category.name}
                 />
               ))}
+
+              <button type="submit" >submit</button>
             </form>
           </ModalBody>
           <ModalFooter></ModalFooter>

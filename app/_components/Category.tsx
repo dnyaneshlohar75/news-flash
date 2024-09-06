@@ -8,16 +8,17 @@ export default function Category(category: categoryListProps) {
   return (
     <>
       <input
-        id={category.name}
+        id={category.id}
         type="checkbox"
         key={category.id}
-        name={category.name}
+        name="category"
+        value={category.name}
         className="hidden"
         onChange={(e) =>
-          e.target.value === "on" ? setChecked(!checked) : null
+          e.target.value == category.name ? setChecked(!checked) : null
         }
       />
-      <label htmlFor={category.name}>
+      <label htmlFor={category.id}>
         <Card
           shadow="sm"
           key={category.id}

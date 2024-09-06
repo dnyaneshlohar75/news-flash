@@ -5,6 +5,19 @@ export interface categoryListProps {
     isChecked?: boolean;
 }
 
+type source = {
+    status: string,
+    sources: [{
+        id: string,
+        name: string,
+        description: string,
+        url: string,
+        category: string,
+        language: string,
+        country: string
+    }]
+}
+
 type article = {
     source?: {
         id: string | null,

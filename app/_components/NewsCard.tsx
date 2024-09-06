@@ -2,16 +2,27 @@
 
 import React from "react";
 import { Button, Card, CardFooter, Chip, Image } from "@nextui-org/react";
-import { LuEye, LuMessageSquare, LuShare2, LuPocket } from "react-icons/lu";
+import { LuEye, LuMessageSquare, LuShare2, LuPocket, LuHeart } from "react-icons/lu";
 import { article } from "@/types/types";
+import Link from "next/link";
+import { useSocket } from "@/providers/SocketProvider";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
-export default function NewsCard({ title, urlToImage }: article) {
+export default function NewsCard({ title, urlToImage, url, source }: article) {
+
+  const { likedPost } = useSocket();
+  const { user } = useKindeBrowserClient();
   return (
     <Card shadow="none" className="border">
       <Image
-        src={urlToImage || 'https://www.its.ac.id/tmesin/wp-content/uploads/sites/22/2022/07/no-image.png' as string}
+        src={
+          urlToImage ||
+          ("https://www.its.ac.id/tmesin/wp-content/uploads/sites/22/2022/07/no-image.png" as string)
+        }
         title={title}
+        alt={title}
       />
+
       <CardFooter className="flex flex-col items-start">
         <div className="w-full my-3 flex items-center justify-between">
           <Chip
@@ -20,12 +31,14 @@ export default function NewsCard({ title, urlToImage }: article) {
             variant="flat"
             className="uppercase text-xs md:text-sm font-semibold"
             size="sm"
-          ></Chip>
+          >
+            {source?.name}
+          </Chip>
           <div className="">
             <div className="flex items-center gap-4">
-              <p className="flex items-center gap-2 font-semibold text-sm">
-                <LuEye className="text-gray-600" size={18} /> 1.5m
-              </p>
+              <button onClick={() => likedPost(user?.id as string, "sdt45-gs4e13-dsg")} className="flex items-center gap-2 font-semibold text-sm">
+                <LuHeart className="text-gray-600" size={18} /> 1.5m
+              </button>
               <p className="flex items-center gap-2 font-semibold text-sm">
                 <LuMessageSquare className="text-gray-600" size={18} /> 35k
               </p>
@@ -35,22 +48,25 @@ export default function NewsCard({ title, urlToImage }: article) {
             </div>
           </div>
         </div>
-        <div className="my-2 grid grid-cols-12 gap-4">
-          <h1
-            className="col-span-9 line-clamp-2 font-semibold text-sm md:text-base"
+        <div className="my-2 w-full flex items-start justify-between gap-2">
+          <Link
+            href={url}
+            className="w-full line-clamp-2 font-semibold text-sm md:text-base"
             title={title}
+            target="_blank"
           >
             {title}
-          </h1>
+          </Link>
           <Button
             size="sm"
-            className="col-span-3 border-1 text-white"
+            className="flex items-center gap-2 border-1 text-white"
             color="success"
             radius="full"
             spinner="start"
+            startContent = {<LuPocket />}
           >
-            <LuPocket />
-            <span className="hidden md:inline">Save to pocket</span>
+            
+            Save to pocket
           </Button>
         </div>
       </CardFooter>

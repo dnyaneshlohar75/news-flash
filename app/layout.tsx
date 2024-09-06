@@ -3,8 +3,10 @@ import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 
 //Providers
-import { SocketProvider } from "@/providers/SocketProvider";
+import { SocketProvider } from "./../providers/SocketProvider";
 import { UiProvider } from "./../providers/UiProvider";
+import Header from "./_components/Header";
+import { ChangeLocalToGlobalNews } from "@/context/ChangeLocalToGlobalNews";
 
 const noto_sans = Noto_Sans({ subsets: ["latin"] });
 
@@ -20,9 +22,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${noto_sans.className} bg-slate-50`}>
+      <body className={`${noto_sans.className} min-h-screen flex flex-col`}>
         <UiProvider>
-          <SocketProvider>{children}</SocketProvider>
+          <SocketProvider>
+            <ChangeLocalToGlobalNews>
+              <Header />
+              <main className = "flex-1 bg-slate-50">
+                {children}
+              </main>
+            </ChangeLocalToGlobalNews>
+          </SocketProvider>
         </UiProvider>
       </body>
     </html>

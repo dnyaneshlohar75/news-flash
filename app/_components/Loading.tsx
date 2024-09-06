@@ -1,5 +1,5 @@
 import {Spinner} from "@nextui-org/react";
 
 export default function Loading() {
-  return <Spinner color='primary' className = "w-full" />
+  return <Spinner color='primary' className = "w-full my-4" />
 }
