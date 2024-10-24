@@ -1,12 +1,11 @@
 import Posts from "@/app/_components/Posts";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Avatar, Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
 export default async function page() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (session?.user?.role !== "user")
     return redirect("/user/login?error=unauthorized_access");
