@@ -1,6 +1,4 @@
-import NextAuth, { NextAuthOptions, Session, User, type DefaultSession } from "next-auth";
-import { AdapterUser } from "next-auth/adapters";
-import { JWT } from "next-auth/jwt";
+import NextAuth, { NextAuthOptions, type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 declare module "next-auth" {
@@ -8,7 +6,6 @@ declare module "next-auth" {
     user: {
       id: string,
       role: string,
-      name: string,
       description?: string,
       contactNumber: string,
       isActive: boolean,
@@ -18,9 +15,15 @@ declare module "next-auth" {
   }
 
   interface User {
+    userId: string,
+    profileUrl: string,
+    type: string,
+    emailId: string,
     id: string,
     role: string,
     name: string,
+    firstName: string,
+    lastName: string,
     description?: string,
     contactNumber: string,
     isActive: boolean,
@@ -106,7 +109,8 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
 
-    async session({ user, token, session }) {
+    //@ts-ignore
+    async session({ session, token, user }) {
       return {
         ...session,
         user: {
@@ -115,8 +119,10 @@ export const authOptions: NextAuthOptions = {
           id: token.id,
           name: token.name,
           role: token.role,
-
-
+          contactNumber: token.contactNumber,
+          isActive: token.isActive,
+          createdAt: token.createdAt,
+          updatedAt: token.updatedAt,
         },
       };
     }
