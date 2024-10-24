@@ -6,12 +6,12 @@ import { LuEye, LuMessageSquare, LuShare2, LuPocket, LuHeart } from "react-icons
 import { article } from "@/types/types";
 import Link from "next/link";
 import { useSocket } from "@/providers/SocketProvider";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { useSession } from "next-auth/react";
 
 export default function NewsCard({ title, urlToImage, url, source }: article) {
+  const { data } = useSession();
 
   const { likedPost } = useSocket();
-  const { user } = useKindeBrowserClient();
   return (
     <Card shadow="none" className="border">
       <Image
@@ -36,7 +36,7 @@ export default function NewsCard({ title, urlToImage, url, source }: article) {
           </Chip>
           <div className="">
             <div className="flex items-center gap-4">
-              <button onClick={() => likedPost(user?.id as string, "sdt45-gs4e13-dsg")} className="flex items-center gap-2 font-semibold text-sm">
+              <button onClick={() => likedPost(data?.user?.id as string, "sdt45-gs4e13-dsg")} className="flex items-center gap-2 font-semibold text-sm">
                 <LuHeart className="text-gray-600" size={18} /> 1.5m
               </button>
               <p className="flex items-center gap-2 font-semibold text-sm">
