@@ -38,7 +38,7 @@ export default function Notification() {
             <DropdownItem key={notification.notificationId}>
               <h1 className="font-semibold text-sm">{notification.title}</h1>
               <p className="text-sm">
-                {`${notification.userId} ${notification?.type.toLowerCase()} ${
+                {`${notification.userId} ${notification?.type?.toLowerCase()} ${
                   notification.articleId
                 }`}
               </p>
