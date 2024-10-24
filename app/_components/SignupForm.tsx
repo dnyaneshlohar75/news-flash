@@ -52,7 +52,7 @@ export default function SignupForm() {
   return (
     <Card radius="sm" className="w-96 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <CardHeader className="flex flex-col gap-1">
-        <h1 className="font-semibold text-lg">Let's create an account!</h1>
+        <h1 className="font-semibold text-lg">Let&apos;s create an account!</h1>
       </CardHeader>
       <CardBody className="p-8">
         <form action={handleSignup}>

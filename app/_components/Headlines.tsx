@@ -32,7 +32,7 @@ export default function Headlines({
     if (inView) {
       loadMoreFeeds();
     }
-  }, [inView]);
+  }, [inView, loadMoreFeeds]);
 
   return (
     <section className="p-5">
