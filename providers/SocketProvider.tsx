@@ -2,7 +2,6 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 interface SocketProviderProps {
   children?: React.ReactNode;
@@ -12,6 +11,8 @@ interface SocketContextInteface {
   sendMessage: (msg: string) => any;
   likedPost: (userId: string, articleId: string) => any;
 }
+
+const user = {};
 
 const SocketContext = createContext<SocketContextInteface | null>(null);
 
@@ -26,7 +27,6 @@ export const useSocket = () => {
 }
 
 export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
-  const { user } = useKindeBrowserClient();
 
   const [socket, setSocket] = useState<Socket>();
 
@@ -36,8 +36,6 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
     );
 
     setSocket(_socket);
-
-    _socket.emit("user_details", user);
 
     _socket.on("welcome-message", (msg: string) => {
       console.log("Socket Server Message:", msg);

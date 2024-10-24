@@ -33,6 +33,17 @@ type article = {
 
 }
 
+type Post = {
+    postId: string,
+    userId: string,
+    title: string,
+    description?: string,
+    images: string[],
+    like: string[],
+    comments: string[],
+    createdAt: Date
+}
+
 export interface NewsProps {
     status: string,
     totalResults: number,

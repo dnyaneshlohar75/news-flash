@@ -1,17 +1,15 @@
-"use client";
-
-import { useKindeAuth } from '@kinde-oss/kinde-auth-nextjs';
 import { User } from '@nextui-org/react';
+import { useSession } from 'next-auth/react';
 
 export default function UserProfile() {
-    const { user } = useKindeAuth();
+    const { data } = useSession();
 
   return (
     <User
-        name = {user?.given_name}
-        description = {user?.email}
+        name = {data?.user?.name}
+        description = {data?.user?.email}
         avatarProps = {{
-            src: user?.picture as string || "",
+            src: data?.user?.image as string || "",
             size: "sm"
         }}
     />

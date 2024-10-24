@@ -6,10 +6,10 @@ export type Type = "LIKE" | "COMMENT";
 export type Notification = {
   notificationId: string;
   userId: string;
-  type: Type;
+  type?: Type;
   title: string;
   time: string;
-  articleId: string;
+  articleId?: string;
 };
 
 type State = {
@@ -17,6 +17,7 @@ type State = {
   notifications: Notification[];
 };
 
+//
 export const useNotifications = create<State>()(
   persist(
     (set) => ({
@@ -24,7 +25,7 @@ export const useNotifications = create<State>()(
         {
           notificationId: "1",
           title: "I am first notfication",
-          time: "",
+          time: new Date(Date.now()).toISOString(),
           type: "LIKE",
           userId: "2",
           articleId: "4"
